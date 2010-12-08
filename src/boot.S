@@ -25,23 +25,9 @@ start:
    push  %eax                       # Multiboot magic number
    push  %ebx                       # Multiboot data structure
 
-   // mov $CR4_FLAGS,%eax		# Set PAE and PGE /* Bits 5 & 7 enabled */
-   // mov %eax,%cr4		// Move it into Control Reg 4
-
-	cli
-	lgdt 	(gdt_end)
-
    call  kmain            # call kernel proper
 
    cli
 hang:
    hlt                    # halt machine should kernel return
    jmp   hang
-
-.align 8
-gdt:
-	.quad 0x0000000000000000 # Our null descriptor
-	                    
-gdt_end:
-	.word (gdt_end)-(gdt) 	// 16 Bit GDT Size
-	.long (gdt)		// 32 Bit Addr - 64 for 64 Bit Mode
