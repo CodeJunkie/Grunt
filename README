@@ -1,15 +1,43 @@
------------------------------------------------------------------------
-Initial Git Upload:
-	Well, the code doesn't do much, but it does boot up the machine. As a warning to all wanting to test it on a real machine, or curious on how it will run ... idk ... I haven't tried.
+﻿--------------------------------------------------------------------------
+Hello World:
+	This is just an learning tool for me. It is not intended to be used
+	for commercial purposes or for that matter, practical solutions to
+	anything. I do not guarantee any software.
 
-	There is some code in here that was an attempt to setup GDT, LDT, and inevitably paging. Note that it was an attempt and I have no clue if it actually works. I will be rewriting all of the code, in due time.
+	The whole purpose of writing this code is so myself and others may
+	learn from my mistakes.
+
+--------------------------------------------------------------------------
+Virtual HDD Image:
+	I have uploaded a Virtual HDD image. The image has grub pre installed
+	on it, all you need to do is install kpartx and run the mount-vd
+	script. If anybody would like to write a unmount script that cleans
+	things up I would greatly appreciate that. Something to note, use the
+	make install to build and install the new kernel binaries to the
+	mounted virtual drive folder as it calls sync. This will allow you to
+	run the newly compiled kernel immediately after the compile, rather
+	than wait 30+ Seconds for the OS to flush its cache by itself.
+
+--------------------------------------------------------------------------
+Initial Git Upload:
+	Well, the code doesn't do much, but it does boot up the machine. As 
+	a warning to all wanting to test it on a real machine, or curious 
+	on how it will run ... idk ... I haven't tried. 
 
 How To Compile:
-	Well, it's pretty straight forward. Run make. As far as actually running the code ... Well I had downloaded a lfs(0) live-cd and loaded it into vBox(1) with a 70 meg or so hdd-image. I compiled grub and installed it within the vBox vm. I converted the the .vdi image to a raw .img file. Run the folowing in the console:
+	Well, it's pretty straight forward. Run make. As far as actually
+	running the code ... Well I had downloaded a lfs(0) live-cd and
+	loaded it into vBox(1) with a 70 meg or so hdd-image. I compiled
+	grub and installed it within the vBox vm. I converted the the .vdi
+	image to a raw .img file. Run the following in the console:
 
 vditool COPYDD vbox-image.vdi raw-image.img
 
-This will convert your vdi hdd into a raw image format that qemu(2) can use. As far as qemu goes, I downloaded the version that MIT uses for their os enginerring class. When I have a working system I will be using vBox to remove the headache of actually updating your hdd image. Look into kpartx and .img mounting using loopback adapters.
+	This will convert your vdi hdd into a raw image format that qemu(2)
+	can use. As far as qemu	goes, I downloaded the version that MIT uses
+	for their OS engineering class. When I have a working system I will
+	be using vBox to remove the headache of actually updating your hdd 
+	image. Look into kpartx and .img mounting using loop-back adapters.
 
 Links Regarding Mentioned Software:
 lfs(0): 	http://www.linuxfromscratch.org/
@@ -18,6 +46,9 @@ qemu(2): 	http://pdos.csail.mit.edu/6.828/2010/tools.html
 
 
 Short-Term TODO List:
-	Plan Memory Management
-	Write a 64-bit Bootloader, or get Grub to boot 64-bit directly
------------------------------------------------------------------------
+	GDT - Proper
+	IDT - Proper
+	Paging Mechanisms
+	IPC
+	the whole operating system.
+--------------------------------------------------------------------------

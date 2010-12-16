@@ -1,0 +1,2 @@
+#!/bin/bash
+qemu-system-x86_64 -s -monitor stdio -boot c -hda disk.img -m 256

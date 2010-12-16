@@ -1,0 +1,7 @@
+#!/bin/bash
+
+loopdev=$(losetup -s -f disk.img)
+kpartx -a $loopdev 
+mount /dev/mapper/$(basename $loopdev)p1 virtualDrive/
+chmod a+w virtualDrive/
+chmod a+w virtualDrive/boot/
