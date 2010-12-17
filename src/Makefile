@@ -3,7 +3,7 @@
 CFLAGS=-m32 -g -ffreestanding -nostdlib -mno-red-zone -mno-mmx -mno-sse -mno-sse2 -mno-sse3 -mno-3dnow -nostdinc -fno-builtin -nostartfiles -nodefaultlibs
 INCLUDES=-Iinclude
 
-OBJS=entry32.o asm.o kscreen.o kmain.o
+OBJS=entry32.o asm.o kscreen.o kmain.o interrupts.o
 
 # defines
 LDSCRIPT=link.ld
