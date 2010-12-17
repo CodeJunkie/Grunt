@@ -41,6 +41,8 @@ eok:
 	jmp eok
 // =================================================================================
 
+/* BELOW THIS LINE IS CODE THAT IS NOT BEING USED !!! */
+
 // =================================================================================
 /*
  * Function: iniDescriptors
@@ -58,8 +60,8 @@ iniDescriptors:
 	push %ebp		// Preserve calling functions stack
 	mov %esp, %ebp	// Setup our own stack
 
-	// Code0
-	lgdt	gdtdesc
+	// Code
+
 
 	mov $0, %eax	// Return 0
 	// Exit
@@ -77,4 +79,4 @@ gdt:
 
 gdtdesc:
   .word   (gdtdesc - gdt - 1)              // sizeof(gdt) - 1
-  .long   gdt                             // address gdt
+  .long   gdt                              // address gdt

@@ -13,10 +13,12 @@ Purpose: This is the main entry point for the kernel. This will setup the GDT,
 #include <ktypes.h>
 #include <kcommon.h>
 #include <kscreen.h>
+#include <descriptors.h>
 
 void kmain( uint magic, uint* multibootData ) {
 	kscreen_clear();
 	kscreen_write("booting mini-me.bin ...\n");
+/*
 	kscreen_writeHex32( kread_cr0() );
 	kscreen_write("\n");
 	kwrite_cr0( (0xFFFFFFFE & kread_cr0()) );
@@ -30,5 +32,9 @@ void kmain( uint magic, uint* multibootData ) {
 	kwrite_cr2( (0x00000001 | kread_cr2()) );
 	kwrite_cr3( (0x00000001 | kread_cr3()) );
 	kwrite_cr4( (0x00000001 | kread_cr4()) );
+*/
+
+	kini_idt();
+	kscreen_write( "Done?\n" ); 
 
 }

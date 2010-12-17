@@ -29,11 +29,6 @@ void kwrite_cr0( uint data ) {
 	asm volatile( "movl %%eax, %%cr0" : : );
 }
 
-void kwrite_cr1( uint data ) {
-	asm volatile( "movl %0, %%eax" : : "a" (data) );
-	asm volatile( "movl %%eax, %%cr1" : : );
-}
-
 void kwrite_cr2( uint data ) {
 	asm volatile( "movl %0, %%eax" : : "a" (data) );
 	asm volatile( "movl %%eax, %%cr2" : : );
@@ -53,13 +48,6 @@ void kwrite_cr4( uint data ) {
 uint kread_cr0( ) {
 	uint data = 0x0;
 	asm volatile( "movl %%cr0, %%eax" : : );
-	asm volatile( "movl %%eax, %0" : "=m" (data) : );
-	return data;
-}
-
-uint kread_cr1( ) {
-	uint data = 0x0;
-	asm volatile( "movl %%cr1, %%eax" : : );
 	asm volatile( "movl %%eax, %0" : "=m" (data) : );
 	return data;
 }
@@ -84,3 +72,19 @@ uint kread_cr4( ) {
 	asm volatile( "movl %%eax, %0" : "=m" (data) : );
 	return data;
 }
+
+// =================================================================================
+// = Interrupt Enabling and Disabling Functions
+// =================================================================================
+void kinterrupt_enable(){
+	asm volatile( "sti" : : );
+}
+
+void kinterrupt_disable(){
+	asm volatile( "cli" : : );
+}
+
+
+
+
+

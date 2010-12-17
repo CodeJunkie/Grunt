@@ -20,15 +20,17 @@ ushort inw( ushort port );
 // TODO: Write data structures to represent each control register
 
 void kwrite_cr0( uint data );
-void kwrite_cr1( uint data );
 void kwrite_cr2( uint data );
 void kwrite_cr3( uint data );
 void kwrite_cr4( uint data );
 
 uint kread_cr0( );
-uint kread_cr1( );
 uint kread_cr2( );
 uint kread_cr3( );
 uint kread_cr4( );
+
+// Interrupt Enabling/Disabling
+void kinterrupt_enable();
+void kinterrupt_disable();
 
 #endif
